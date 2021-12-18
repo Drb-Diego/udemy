@@ -3,30 +3,27 @@ import React from "react";
 class App extends React.Component {
     
   state = {
-    name: "Diego Brito",
-    counter: 0,
+    posts: [
+      {id: 1, title: 'titulo 1', body: 'conteudo 1'},
+      {id: 2, title: 'titulo 2', body: 'conteudo 2'},
+      {id: 3, title: 'titulo 3', body: 'conteudo 3'},
+      {id: 4, title: 'titulo 4', body: 'conteudo 4'},
+    ],
   };
- 
-  handleClick = () => this.setState({name: 'Diego Ramos Brito'});
-  
-  handleAncorClick = (event) => {
-    event.preventDefault();
-    const { counter } = this.state;
-    this.setState({counter: counter + 1});
-  }
 
   render() {
-    const { name, counter } = this.state;
-
+    const { posts } = this.state;
     return (
-      <>
-        <h1 onClick={ this.handleClick }>
-          { name }
-        </h1>
-        <a href="https://google.com" onClick={this.handleAncorClick}>
-          Google { counter }
-        </a>
-      </>
+      <div>
+        {
+          posts.map(post => (
+            <div key={post.id}>
+              <h1>{post.title}</h1>
+              <p>{post.body}</p>
+            </div>
+          )) 
+        }
+      </div>
     );
   }
 }
