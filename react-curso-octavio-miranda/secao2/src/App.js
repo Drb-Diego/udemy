@@ -1,10 +1,41 @@
-import React from 'react'
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
-export default function App() {
-  return (
-    <div>
-      <h1>OLá mundo !</h1>
-    </div>
-  )
+class App extends React.Component {
+
+  state = {
+    name: 'Learn React'
+  }
+
+  handleClickLink = (event) => {
+    event.preventDefault();
+    this.setState({ name: 'Diego' })
+  }
+
+  render() {
+    const { name } = this.state;
+
+    return (
+      <div className='App'>
+        <header className='App-header'>
+          <img src={logo} className='App-logo' alt='logo' />
+          <p>
+            Edit <code>src/App.js</code> and save to reload.
+          </p>
+          <a
+            className='App-link'
+            href='https://reactjs.org'
+            target='_blank'
+            rel='noopener noreferrer'
+            onClick={ this.handleClickLink }
+          >
+            {name}
+          </a>
+        </header>
+      </div>
+    );
+  }
 }
 
+export default App;
